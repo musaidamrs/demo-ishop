@@ -21,7 +21,7 @@
 }
 html{background:radial-gradient(ellipse at 80% 7%,#af465610,transparent 52%),radial-gradient(ellipse at 15% 55%,#83203908,transparent 60%),var(--paper);background-attachment:fixed}
 html[data-theme=dark]{background:radial-gradient(ellipse at 75% 5%,#75131d42,transparent 48%),radial-gradient(ellipse at 15% 60%,#59101830,transparent 60%),var(--paper);background-attachment:fixed}
-#matrix{opacity:.42}
+#matrix{opacity:.60}
 html[data-theme=dark] #matrix{opacity:.45}
 html body .brand{font-family:'Manzana Helvetica',Helvetica,Arial,sans-serif;letter-spacing:0;gap:0}
 html body .brand .ishop-wordmark{display:flex;flex-direction:column;align-items:center;font-size:38px;font-weight:700;letter-spacing:-1.8px;line-height:1;color:var(--ink)}
@@ -56,12 +56,12 @@ html[data-theme=dark] body .search-dialog .search-result{color:var(--ink)}
 html[data-theme=dark] body .search-dialog .search-result small{color:var(--muted)}
 html body :is(.search-result,.sort-menu button):hover{background:var(--nav-hover)}
 html body .sort-menu button[aria-checked=true]{color:var(--accent)}
-html body .hero{background:radial-gradient(ellipse at 20% 85%,#751c29,#33070c 72%);color:#fff8f6;box-shadow:0 14px 40px #33070c15}
+html body section.hero,html[data-theme=dark] body section.hero{background:radial-gradient(ellipse at 20% 85%,#751c29,#33070c 72%);color:#fff8f6;box-shadow:0 14px 40px #33070c15}
 html body .hero h1{color:#fff8f6}
-html body .hero-visual{left:46%;border-radius:26px 0 0 26px;background:#fff}
+html body .hero-visual{left:38%;border-radius:0;background:#fff;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%);mask-image:linear-gradient(90deg,transparent 0%,#000 30%)}
 html body .hero-visual::after{display:none}
 html body .hero-copy{padding-left:10%}
-html body .hero-copy .pill{background:linear-gradient(115deg,#fff8f7,#f0d8dc 65%,#fff4f5);color:#651326;box-shadow:none}
+html body .hero-copy .pill{background:linear-gradient(115deg,#a8203c,#bc304b 55%,#a91f3a);color:#fff;box-shadow:inset 0 0 0 1px #ffffff26,0 6px 20px #1c00032e}
 html body .second-row .portrait-banner{background:radial-gradient(ellipse at 20% 12%,#ffffff66,transparent 65%),rgba(241,224,226,.56)}
 html[data-theme=dark] body .second-row .portrait-banner{background:radial-gradient(ellipse at 20% 12%,#ad354026,transparent 65%),rgba(77,28,35,.36)}
 html body .cards .card{border-color:var(--frost-edge)}
@@ -73,8 +73,19 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 @media(max-width:760px){
   html body .header>.brand .ishop-wordmark{font-size:31px;letter-spacing:-1.4px}
   html body .header>.brand .ishop-wordmark small{font-size:7px;letter-spacing:.7px;margin-top:4px}
-  html body .hero-visual{border-radius:18px 0 0 18px}
+  html body .hero-visual{border-radius:0}
   html body .hero h1{font-size:clamp(17px,4.5vw,30px)}
   html body .hero-copy{padding-left:10%}
   html body .hero-copy .pill{padding:10px;font-size:11px;gap:6px}
 }
+
+/* Centre the wordmark independently of the unequal side controls. */
+html body .header>.brand{position:absolute;left:50%;transform:translateX(-50%);padding-left:0;margin:0;width:max-content}
+
+/* Brighter wine-coloured glyphs on light glass; solid-button glyphs stay white. */
+html[data-theme=light]{--ui-icon:#a34356;--ui-icon-active:#bf2e4b}
+html[data-theme=light] body :is(.icon-btn,.dock-item,.sort-trigger,.pill.outline,.menu-dialog nav a,.search-result) svg,
+html[data-theme=light] body .catalog-tabs .sf-category{color:var(--ui-icon)}
+html[data-theme=light] body nav.dock .dock-item:is(.active,[aria-expanded=true],.scrub-target) svg,
+html[data-theme=light] body .catalog-tabs .chip.active .sf-category,
+html[data-theme=light] body .favorite.selected svg{color:var(--ui-icon-active)}

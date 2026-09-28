@@ -108,7 +108,7 @@ html{overflow-x:clip}
 [data-theme=dark] .footer{background:#1c1c1fbe;border-color:var(--line)}[data-theme=dark] .footer-bottom{border-color:var(--line)}
 [data-theme=dark] :is(.product-copy,.info-page,.section-title,.breadcrumbs,.page-heading,.lead)::before{background:#121214d4}
 [data-theme=dark] .portrait-banner{background:linear-gradient(140deg,#383131,#262122 70%,#3b3334)}
-[data-theme=dark] .hero{background:#17171a}[data-theme=dark] .hero-copy::before{background:#17171aee}[data-theme=dark] .hero-visual:after{background:linear-gradient(90deg,#17171a,transparent 58%)}
+[data-theme=dark] .hero-copy::before{background:#17171aee}[data-theme=dark] .hero-visual:after{background:linear-gradient(90deg,#17171a,transparent 58%)}
 [data-theme=dark] .hero p{color:#b9bac2}
 [data-theme=dark] :is(.catalog-search,.sort-trigger,.option,.chip,.quantity,.chat-quick button,input[type=search],input[type=number],select){background:#29292e;border-color:#47474d;color:var(--ink)}
 [data-theme=dark] .catalog-search input{background:transparent;border:0}[data-theme=dark] input::placeholder{color:#a8a8b0}[data-theme=dark] .chat-form input{color:var(--ink)}
@@ -139,7 +139,7 @@ html{overflow-x:clip}
 @media(max-width:350px){.cards .card-image{height:164px}}
 
 /* The hero retains its light photography stage in both themes. */
-[data-theme=dark] .hero{background:#fff;color:#23191a}
+
 [data-theme=dark] .hero-copy::before{background:#ffffffda}
 [data-theme=dark] .hero-visual:after{background:linear-gradient(90deg,#fff,#ffffff00 38%)}
 [data-theme=dark] .hero p{color:#826668}
