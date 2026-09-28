@@ -296,3 +296,80 @@ html[data-theme=light] .device-rail-item:is(.active,.scrub-target) .sf-category{
  html body .gallery-thumb{flex-basis:70px;height:66px}
 }
 @media(prefers-reduced-motion:reduce){.device-rail-indicator,.device-rail-item,.filter-choice,.filter-choice>svg{transition:none}}
+
+/* v9 — capsule selections, quiet footer, and brighter wine accents. */
+:root{--active-ink:#b9143c;--brand-ink:#ce2549;--sort-glass:rgba(250,250,252,.74);--sort-shine:rgba(255,255,255,.15);--footer-shadow:0 2px 14px rgba(0,0,0,.06)}
+:root[data-theme=dark]{--active-ink:#ff6d8d;--brand-ink:#f54569;--sort-glass:rgba(25,25,29,.64);--sort-shine:rgba(255,255,255,.045);--footer-shadow:0 2px 16px rgba(0,0,0,.18)}
+
+/* Keep the footer in the content column, with no full-width glass panel. */
+html[data-theme] body footer.footer{background:transparent!important;border:0;border-radius:0!important;box-shadow:none;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow:visible;margin-top:48px;padding:28px 0 110px!important;text-shadow:var(--footer-shadow)}
+html[data-theme] body .footer-inner{gap:24px}
+html[data-theme] body .footer p{margin-top:16px;font-size:14px;line-height:1.65}
+html[data-theme] body .footer h4{font-size:15px;line-height:1.5;margin-bottom:14px}
+html[data-theme] body .footer a:not(.brand),html[data-theme] body .footer-label{font-size:14px;margin:10px 0;line-height:1.5}
+html[data-theme] body .footer .brand .ishop-wordmark{font-size:36px}
+html[data-theme] body .footer-bottom{padding-top:20px;margin-top:28px;gap:12px 22px;border-color:var(--frost-edge);font-size:11px;line-height:1.6}
+
+/* Fully rounded ends on both the moving indicator and hover target. */
+html[data-theme] body nav.dock :is(.dock-indicator,.dock-item),
+html[data-theme] body .device-rail :is(.device-rail-indicator,.device-rail-item),
+html[data-theme] body .catalog-tabs :is(.category-indicator,.chip){border-radius:999px}
+html[data-theme] body nav.dock .dock-indicator,
+html[data-theme] body .device-rail .device-rail-indicator{border:0;box-shadow:none;background:var(--nav-selection)}
+html[data-theme] body nav.dock .dock-item:is(.active,[aria-expanded=true],.scrub-target),
+html[data-theme] body .device-rail-item:is(.active,.scrub-target),
+html[data-theme] body .catalog-tabs .chip.active,
+html[data-theme] body .option.active{color:var(--active-ink)}
+html[data-theme] body nav.dock .dock-item:is(.active,[aria-expanded=true],.scrub-target) svg,
+html[data-theme] body .device-rail-item:is(.active,.scrub-target) .sf-category,
+html[data-theme] body .catalog-tabs .chip.active svg,
+html[data-theme] body .catalog-tabs .chip.active .sf-category{color:var(--active-ink);filter:none}
+html[data-theme] body .sort-trigger[aria-expanded=true],
+html[data-theme] body .sort-trigger[aria-expanded=true] svg{color:var(--active-ink)}
+html[data-theme] body .filter-choice:has(input:checked){color:var(--active-ink);border-color:var(--active-ink)}
+html[data-theme] body .filter-choice:has(input:checked) :is(svg,.sf-category){color:var(--active-ink)}
+
+/* The heart keeps its hit area, but no disc in any state or theme. */
+html[data-theme] body .cards .card .favorite{background:transparent!important;border:0;box-shadow:none;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html[data-theme] body .cards .card .favorite svg{filter:none}
+html[data-theme] body .cards .card .favorite.selected,
+html[data-theme] body .cards .card .favorite.selected svg{color:#c72348;fill:currentColor}
+
+html[data-theme] body .filter-price-range label{border-radius:999px;padding-inline:18px}
+html[data-theme] body .filter-price-range input{border-radius:0;outline:0}
+html[data-theme] body .filter-price-range label:focus-within{outline:2px solid var(--active-ink);outline-offset:3px}
+
+/* The dark checked-state rule in style.css must not tint this neutral material. */
+html[data-theme] body .sort-menu{padding:8px;border-radius:30px;background:linear-gradient(135deg,var(--sort-shine),transparent 65%),var(--sort-glass);backdrop-filter:blur(22px)!important;-webkit-backdrop-filter:blur(22px)!important}
+html[data-theme=dark] body .sort-menu{backdrop-filter:blur(22px) brightness(.8)!important;-webkit-backdrop-filter:blur(22px) brightness(.8)!important}
+html[data-theme] body .sort-menu button{min-height:46px;border-radius:999px;padding:13px 18px;justify-content:flex-start;line-height:1.4}
+html[data-theme] body .sort-menu button[aria-checked=true]{background:var(--nav-selection);color:var(--active-ink);border:0;box-shadow:none}
+html[data-theme] body .sort-menu button:is(:hover,:focus-visible):not([aria-checked=true]){background:var(--nav-hover)}
+html[data-theme] body .sort-menu button:focus-visible{outline:2px solid var(--active-ink);outline-offset:-3px}
+
+/* A localized sheen is clipped to the wordmark letters; no background plate. */
+html[data-theme] body :is(.brand-name,.menu-wordmark){position:relative;display:inline-block;color:var(--brand-ink);text-shadow:none;isolation:isolate}
+html[data-theme] body .ishop-wordmark small{color:var(--muted)}
+@media(any-hover:hover) and (any-pointer:fine) and (prefers-reduced-motion:no-preference){
+ html[data-theme] body :is(.brand-name,.menu-wordmark)::after{content:attr(data-logo-text);position:absolute;inset:0;pointer-events:none;color:transparent;-webkit-text-fill-color:transparent;background:radial-gradient(ellipse 64px 42px at var(--glow-x,50%) var(--glow-y,50%),#ffe9ed 0%,#ff8ea6 32%,#ff527855 60%,transparent 82%);background-clip:text;-webkit-background-clip:text;filter:drop-shadow(0 0 4px #fa41683d);opacity:0;transition:opacity .36s var(--ease)}
+ html[data-theme] body :is(.brand-name,.menu-wordmark)[data-glow-active=true]::after{opacity:1}
+}
+
+/* Desktop chrome gets less pigment while retaining a frosted background. */
+@media(min-width:1024px){
+ :root{--rail-glass:rgba(248,248,250,.58);--rail-shine:rgba(255,255,255,.11);--control-glass:rgba(255,255,255,.36);--control-shine:rgba(255,255,255,.18);--search-glass:rgba(245,245,247,.64)}
+ :root[data-theme=dark]{--rail-glass:rgba(24,24,28,.52);--rail-shine:rgba(255,255,255,.035);--control-glass:rgba(61,61,65,.13);--control-shine:rgba(255,255,255,.045);--search-glass:rgba(21,21,25,.60)}
+ html[data-theme] body :is(nav.dock,nav.device-rail){background:linear-gradient(135deg,var(--rail-shine),transparent 65%),var(--rail-glass)!important;backdrop-filter:blur(22px)!important;-webkit-backdrop-filter:blur(22px)!important}
+ html[data-theme=dark] body :is(nav.dock,nav.device-rail){backdrop-filter:blur(22px) brightness(.8)!important;-webkit-backdrop-filter:blur(22px) brightness(.8)!important}
+ html[data-theme] body :is(.header .top-control,.header-actions,.catalog-search,.catalog-tabs,.sort-trigger){background:linear-gradient(135deg,var(--control-shine),transparent 65%),var(--control-glass);backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important}
+ html[data-theme=dark] body :is(.header .top-control,.header-actions){backdrop-filter:blur(20px) brightness(.46)!important;-webkit-backdrop-filter:blur(20px) brightness(.46)!important}
+ html[data-theme] body :is(dialog.search-dialog,dialog.filters-dialog){background:linear-gradient(135deg,var(--rail-shine),transparent 65%),var(--search-glass)!important;backdrop-filter:blur(22px)!important;-webkit-backdrop-filter:blur(22px)!important}
+ html[data-theme=dark] body :is(dialog.search-dialog,dialog.filters-dialog){backdrop-filter:blur(22px) brightness(.85)!important;-webkit-backdrop-filter:blur(22px) brightness(.85)!important}
+ html[data-theme] body footer.footer{padding-bottom:32px!important}
+}
+@media(max-width:760px){
+ html[data-theme] body footer.footer{margin-top:32px;padding-top:20px!important}
+ html[data-theme] body .footer-inner{gap:24px 18px}
+ html[data-theme] body .footer .brand .ishop-wordmark{font-size:32px}
+ html[data-theme] body .filter-price-range label{padding-inline:15px}
+}
