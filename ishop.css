@@ -10,7 +10,7 @@
   background:var(--paper);color:var(--ink);
 }
 :root[data-theme=dark]{
-  --paper:#210608;--ink:#fff7f5;--muted:#d0b3b7;--secondary:#dfc5c9;
+  --paper:#130306;--ink:#fff7f5;--muted:#d0b3b7;--secondary:#dfc5c9;
   --surface:#361417;--line:#67333d;--accent:#ffc0c8;--accent-soft:#f4a1af;
   --frost:rgba(96,43,49,.20);--frost-edge:rgba(255,215,218,.17);
   --frost-shine:rgba(255,208,215,.075);--frost-shadow:0 8px 28px #10000220;
@@ -20,7 +20,7 @@
   background:var(--paper);color:var(--ink);
 }
 html{background:radial-gradient(ellipse at 80% 7%,#af465610,transparent 52%),radial-gradient(ellipse at 15% 55%,#83203908,transparent 60%),var(--paper);background-attachment:fixed}
-html[data-theme=dark]{background:radial-gradient(ellipse at 75% 5%,#75131d42,transparent 48%),radial-gradient(ellipse at 15% 60%,#59101830,transparent 60%),var(--paper);background-attachment:fixed}
+html[data-theme=dark]{background:radial-gradient(ellipse at 75% 5%,#57101b24,transparent 48%),radial-gradient(ellipse at 15% 60%,#40101a20,transparent 60%),var(--paper);background-attachment:fixed}
 #matrix{opacity:.60}
 html[data-theme=dark] #matrix{opacity:.45}
 html body .brand{font-family:'Manzana Helvetica',Helvetica,Arial,sans-serif;letter-spacing:0;gap:0}
@@ -169,3 +169,45 @@ a.contact-row:hover{transform:translateY(-2px)}
  html body .catalog-dropdowns .sort-trigger{padding:0 13px;gap:7px;font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){html body :is(.dock-indicator,.category-indicator,.card-track,.product-gallery-track,.contact-row){transition:none}}
+
+/* Contacts share one continuous glass surface. */
+.contacts-list{gap:0;padding:6px 24px;border-radius:32px;overflow:hidden;background:var(--frost-fill);border:1px solid var(--frost-edge);box-shadow:inset 0 1px 0 var(--frost-shine),var(--frost-shadow);backdrop-filter:blur(var(--frost-blur));-webkit-backdrop-filter:blur(var(--frost-blur))}
+html body .contacts-list .contact-row{padding:22px 4px;border:0;border-radius:0;background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.contacts-list .contact-row+.contact-row{border-top:1px solid var(--line)!important}
+html body .contacts-list a.contact-row:hover{transform:none;background:var(--nav-hover)}
+
+/* Remove the old dark masks beneath headings and supporting text. */
+html body :is(.section-title,.breadcrumbs,.page-heading,.lead)::before{content:none;display:none;background:none;box-shadow:none;filter:none;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html body :is(.section-title,.breadcrumbs,.page-heading,.lead){text-shadow:none;box-shadow:none;background:transparent;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+
+#device-icon{display:flex;align-items:center;flex:none}
+#device-icon .sf-category{width:21px;height:21px;color:var(--accent)}
+.device-option .sf-category{width:24px;height:24px;color:var(--accent);flex:none}
+html[data-theme=light] #device-icon .sf-category,html[data-theme=light] .device-option .sf-category{color:var(--ui-icon)}
+@media(max-width:760px){
+ html body .catalog-toolbar{display:flex;flex-wrap:nowrap;gap:6px;align-items:center}
+ html body .catalog-toolbar .catalog-tabs{flex:0 0 90px;max-width:90px;padding:3px;gap:0;height:50px}
+ html body .catalog-toolbar .catalog-tabs .chip{height:42px;padding:3px;font-size:12px}
+ html body .catalog-toolbar .catalog-tabs .chip svg{width:20px;height:20px}
+ html body .catalog-dropdowns{flex:1;min-width:0;width:auto;margin:0;gap:6px}
+ html body .catalog-dropdowns .sort-wrap{flex:1 1 0;min-width:0;position:static}
+ html body .catalog-dropdowns .sort-trigger{height:50px;min-width:0;padding:0 9px;gap:5px;font-size:12px;line-height:1.2;white-space:normal;justify-content:center}
+ .catalog-dropdowns .sort-trigger>span:not(#device-icon){min-width:0;overflow-wrap:anywhere}
+ html body .catalog-dropdowns .sort-trigger>svg:last-child{width:13px;height:13px;flex:none}
+ #device-icon .sf-category{width:18px;height:18px}
+ .catalog-dropdowns .device-menu{left:auto;right:0;max-width:calc(100vw - 32px);width:230px;transform-origin:top right}
+ .contacts-list{padding:4px 18px;border-radius:28px}
+ html body .contacts-list .contact-row{padding:18px 0;min-height:84px}
+}
+@media(max-width:360px){
+ html body .catalog-toolbar .catalog-tabs{flex-basis:80px;max-width:80px}
+ html body .catalog-dropdowns .sort-trigger{padding:0 6px;gap:4px}
+}
+
+/* A clipped rose-white highlight follows the pointer behind the button label. */
+@media(any-hover:hover) and (any-pointer:fine) and (prefers-reduced-motion:no-preference){
+ :where(.pill:not(.outline),.add-btn,.chat-form button,.catalog-buy){position:relative}
+ html body :is(.pill:not(.outline),.add-btn,.chat-form button,.catalog-buy){isolation:isolate;overflow:hidden}
+ html body :is(.pill:not(.outline),.add-btn,.chat-form button,.catalog-buy)::before{content:'';position:absolute;left:0;top:0;width:180px;height:180px;border-radius:50%;z-index:-1;pointer-events:none;background:radial-gradient(circle,rgba(255,229,236,.26) 0%,rgba(255,190,210,.13) 32%,rgba(255,190,210,0) 70%);transform:translate3d(var(--glow-x,0px),var(--glow-y,0px),0) translate(-50%,-50%);opacity:0;transition:opacity .32s var(--ease)}
+ html body :is(.pill:not(.outline),.add-btn,.chat-form button,.catalog-buy)[data-glow-active=true]::before{opacity:1}
+}
