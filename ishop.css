@@ -1,0 +1,80 @@
+/* iShop identity: wine, porcelain, and softly tinted glass. */
+:root{
+  --paper:#f6f2f1;--ink:#29181c;--muted:#79676c;--secondary:#766369;
+  --surface:#fcf9f8;--line:#ddcdd0;--accent:#871d30;--accent-soft:#ad3348;
+  --frost:rgba(255,250,249,.55);--frost-edge:rgba(255,255,255,.8);
+  --frost-shine:rgba(255,255,255,.32);--frost-shadow:0 8px 28px #4e11210a;
+  --glass:rgba(255,250,249,.64);--selection:rgba(79,13,29,.11);
+  --nav-selection:rgba(68,18,30,.14);--nav-hover:rgba(68,18,30,.08);
+  --button-blue:linear-gradient(115deg,#741627,#94223a 42%,#7f172b 76%,#861c30);
+  background:var(--paper);color:var(--ink);
+}
+:root[data-theme=dark]{
+  --paper:#210608;--ink:#fff7f5;--muted:#d0b3b7;--secondary:#dfc5c9;
+  --surface:#361417;--line:#67333d;--accent:#ffc0c8;--accent-soft:#f4a1af;
+  --frost:rgba(96,43,49,.20);--frost-edge:rgba(255,215,218,.17);
+  --frost-shine:rgba(255,208,215,.075);--frost-shadow:0 8px 28px #10000220;
+  --glass:rgba(55,20,26,.62);--selection:rgba(13,0,4,.30);
+  --nav-selection:rgba(13,0,4,.32);--nav-hover:rgba(13,0,4,.22);
+  --button-blue:linear-gradient(115deg,#89243a,#a43147 42%,#8d2539 76%,#982b41);
+  background:var(--paper);color:var(--ink);
+}
+html{background:radial-gradient(ellipse at 80% 7%,#af465610,transparent 52%),radial-gradient(ellipse at 15% 55%,#83203908,transparent 60%),var(--paper);background-attachment:fixed}
+html[data-theme=dark]{background:radial-gradient(ellipse at 75% 5%,#75131d42,transparent 48%),radial-gradient(ellipse at 15% 60%,#59101830,transparent 60%),var(--paper);background-attachment:fixed}
+#matrix{opacity:.42}
+html[data-theme=dark] #matrix{opacity:.45}
+html body .brand{font-family:'Manzana Helvetica',Helvetica,Arial,sans-serif;letter-spacing:0;gap:0}
+html body .brand .ishop-wordmark{display:flex;flex-direction:column;align-items:center;font-size:38px;font-weight:700;letter-spacing:-1.8px;line-height:1;color:var(--ink)}
+html body .ishop-wordmark small{display:block;font-size:9px;letter-spacing:1.6px;font-weight:400;line-height:1.4;margin-top:6px;white-space:nowrap}
+html body .menu-wordmark{font-family:'Manzana Helvetica',Helvetica,Arial,sans-serif;font-size:34px;font-weight:700;letter-spacing:-1.4px;padding:0}
+html body .footer .brand .ishop-wordmark{font-size:44px;align-items:flex-start}
+.footer p,.footer a:not(.brand),.footer-bottom,.availability,.search-label{color:var(--muted)}
+.theme-toggle[aria-pressed=true]{color:#f3d6d8}
+html body nav.dock{background:linear-gradient(135deg,#ffffff28,transparent 65%),rgba(243,232,233,.83)!important;border-color:#fff9}
+html[data-theme=dark] body nav.dock{background:linear-gradient(135deg,#ffd6df09,transparent 65%),rgba(47,16,23,.78)!important;border-color:#efb8c129}
+html body nav.dock .dock-indicator{background:var(--nav-selection);box-shadow:none;border:0}
+html body nav.dock .dock-item{color:var(--ink)}
+html body nav.dock .dock-item:is(.active,[aria-expanded=true],.scrub-target){color:var(--accent)}
+html body .catalog-tabs .chip.active{color:var(--accent)}
+.category-indicator{background:var(--selection)}
+html body .count{background:#9a2840;border-color:var(--paper);color:#fff}
+html body .option.active{background:var(--selection);border-color:var(--accent-soft);box-shadow:none;color:var(--ink)}
+html body .color-dot.active{outline-color:var(--accent-soft)}
+html body .gallery-thumb.active{border-color:var(--accent-soft);box-shadow:0 0 0 1px var(--accent-soft)}
+html body .favorite.selected{color:#8f1e35;background:#f9e6ea}
+html body .favorite.selected svg{fill:#efd0d6}
+html body .pill.outline.blue-outline{color:var(--accent);box-shadow:none}
+.pill.blue-outline::after{background-image:linear-gradient(110deg,#601020,#9c2940,#d77d8c,#8f2035,#5c1020,#9c2940)}
+html body :is(.pill:not(.outline),.add-btn,.chat-form button,.catalog-buy){box-shadow:0 5px 16px #5b0d2014}
+html body .pill:not(.outline):hover{box-shadow:0 8px 22px #5b0d2028}
+html body .message.user{background:var(--button-blue);color:#fff;border:0}
+html body dialog.search-dialog{background:linear-gradient(135deg,#ffffff28,transparent 65%),rgba(249,240,241,.80)!important}
+html[data-theme=dark] body dialog.search-dialog{background:linear-gradient(135deg,#ffe4ea0c,transparent 65%),rgba(49,17,25,.68)!important;color:var(--ink)}
+html[data-theme=dark] body .search-dialog .search-input{background:#ffe3e909;color:var(--ink);border-color:#efd0d32b}
+html[data-theme=dark] body .search-dialog .search-input::placeholder{color:#ccacb4}
+html[data-theme=dark] body .search-dialog .search-result{color:var(--ink)}
+html[data-theme=dark] body .search-dialog .search-result small{color:var(--muted)}
+html body :is(.search-result,.sort-menu button):hover{background:var(--nav-hover)}
+html body .sort-menu button[aria-checked=true]{color:var(--accent)}
+html body .hero{background:radial-gradient(ellipse at 20% 85%,#751c29,#33070c 72%);color:#fff8f6;box-shadow:0 14px 40px #33070c15}
+html body .hero h1{color:#fff8f6}
+html body .hero-visual{left:46%;border-radius:26px 0 0 26px;background:#fff}
+html body .hero-visual::after{display:none}
+html body .hero-copy{padding-left:10%}
+html body .hero-copy .pill{background:linear-gradient(115deg,#fff8f7,#f0d8dc 65%,#fff4f5);color:#651326;box-shadow:none}
+html body .second-row .portrait-banner{background:radial-gradient(ellipse at 20% 12%,#ffffff66,transparent 65%),rgba(241,224,226,.56)}
+html[data-theme=dark] body .second-row .portrait-banner{background:radial-gradient(ellipse at 20% 12%,#ad354026,transparent 65%),rgba(77,28,35,.36)}
+html body .cards .card{border-color:var(--frost-edge)}
+html body .cards .card-viewport{background:#fff;box-shadow:inset 0 0 0 1px #fff}
+html body .footer{border-color:var(--frost-edge)}
+html body .footer-bottom{border-color:var(--line)}
+::selection{background:#9b2d46;color:#fff}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline-color:var(--accent-soft)}
+@media(max-width:760px){
+  html body .header>.brand .ishop-wordmark{font-size:31px;letter-spacing:-1.4px}
+  html body .header>.brand .ishop-wordmark small{font-size:7px;letter-spacing:.7px;margin-top:4px}
+  html body .hero-visual{border-radius:18px 0 0 18px}
+  html body .hero h1{font-size:clamp(17px,4.5vw,30px)}
+  html body .hero-copy{padding-left:10%}
+  html body .hero-copy .pill{padding:10px;font-size:11px;gap:6px}
+}
