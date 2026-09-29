@@ -10,7 +10,7 @@
   background:var(--paper);color:var(--ink);
 }
 :root[data-theme=dark]{
-  --paper:#080205;--ink:#fff7f5;--muted:#d0b3b7;--secondary:#dfc5c9;
+  --paper:#210608;--ink:#fff7f5;--muted:#d0b3b7;--secondary:#dfc5c9;
   --surface:#242426;--line:#424246;--accent:#ffc0c8;--accent-soft:#f4a1af;
   --frost:rgba(61,61,65,.20);--frost-edge:rgba(255,255,255,.17);
   --frost-shine:rgba(255,255,255,.075);--frost-shadow:0 8px 28px #00000020;
@@ -20,7 +20,7 @@
   background:var(--paper);color:var(--ink);
 }
 html{background:radial-gradient(ellipse at 80% 7%,#af465610,transparent 52%),radial-gradient(ellipse at 15% 55%,#83203908,transparent 60%),var(--paper);background-attachment:fixed}
-html[data-theme=dark]{background:radial-gradient(ellipse at 75% 5%,#24081112,transparent 48%),radial-gradient(ellipse at 15% 60%,#19050a12,transparent 60%),var(--paper);background-attachment:fixed}
+html[data-theme=dark]{background:radial-gradient(ellipse at 75% 5%,#75131d42,transparent 48%),radial-gradient(ellipse at 15% 60%,#59101830,transparent 60%),var(--paper);background-attachment:fixed}
 #matrix{opacity:.60}
 html[data-theme=dark] #matrix{opacity:.45}
 html body .brand{font-family:'Manzana Helvetica',Helvetica,Arial,sans-serif;letter-spacing:0;gap:0}
@@ -299,7 +299,7 @@ html[data-theme=light] .device-rail-item:is(.active,.scrub-target) .sf-category{
 
 /* v9 — capsule selections, quiet footer, and brighter wine accents. */
 :root{--active-ink:#b9143c;--brand-ink:#ce2549;--sort-glass:rgba(250,250,252,.74);--sort-shine:rgba(255,255,255,.15);--footer-shadow:0 2px 14px rgba(0,0,0,.06)}
-:root[data-theme=dark]{--active-ink:#ff6d8d;--brand-ink:#f54569;--sort-glass:rgba(25,25,29,.64);--sort-shine:rgba(255,255,255,.045);--footer-shadow:0 2px 16px rgba(0,0,0,.18)}
+:root[data-theme=dark]{--active-ink:#ff6d8d;--brand-ink:#ffffff;--sort-glass:rgba(25,25,29,.64);--sort-shine:rgba(255,255,255,.045);--footer-shadow:0 2px 16px rgba(0,0,0,.18)}
 
 /* Keep the footer in the content column, with no full-width glass panel. */
 html[data-theme] body footer.footer{background:transparent!important;border:0;border-radius:0!important;box-shadow:none;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow:visible;margin-top:48px;padding:28px 0 110px!important;text-shadow:var(--footer-shadow)}
@@ -372,4 +372,9 @@ html[data-theme] body .ishop-wordmark small{color:var(--muted)}
  html[data-theme] body .footer-inner{gap:24px 18px}
  html[data-theme] body .footer .brand .ishop-wordmark{font-size:32px}
  html[data-theme] body .filter-price-range label{padding-inline:15px}
+}
+
+/* White wordmark and a neutral pointer sheen in the dark theme. */
+@media(any-hover:hover) and (any-pointer:fine) and (prefers-reduced-motion:no-preference){
+ html[data-theme=dark] body :is(.brand-name,.menu-wordmark)::after{background-image:radial-gradient(ellipse 64px 42px at var(--glow-x,50%) var(--glow-y,50%),#fff 0%,#ffffffb3 32%,#ffffff55 60%,transparent 82%);filter:drop-shadow(0 0 4px #ffffff52)}
 }

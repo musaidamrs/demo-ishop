@@ -73,7 +73,7 @@ $$('dialog').forEach(d=>d.addEventListener('cancel',e=>{e.preventDefault();close
 })();
 
 // Keep navigation on the current design version when older preview pages are cached.
-document.addEventListener('click',event=>{const a=event.target.closest('a[href]');if(!a||a.target==='_blank')return;const url=new URL(a.href,location.href);if(url.origin===location.origin&&url.pathname.endsWith('.html')){url.searchParams.set('v','ishop-9');a.href=url.href}},true);
+document.addEventListener('click',event=>{const a=event.target.closest('a[href]');if(!a||a.target==='_blank')return;const url=new URL(a.href,location.href);if(url.origin===location.origin&&url.pathname.endsWith('.html')){url.searchParams.set('v','ishop-10');a.href=url.href}},true);
 
 function galleryFor(p,color=0){return p.gallery?.[color]?.length?p.gallery[color]:[p.colorImages?.[color]||p.image]}
 function colorHex(name){return ({'Star White':'#e8e7e2','Night Sky':'#353b45','Burgundy':'#633441','Glacier':'#acc4cf','Silver':'#cdd0d4','Black':'#292b31','Sky Blue':'#accbdd','Starlight':'#e6dbcc','Midnight':'#343e50','Blue':'#b9cedc','Purple':'#beb9d3','Space Gray':'#7a7f87','White':'#f0f0ee','Space Gray':'#888c96','Light Gold':'#e3cfb3','Dark Bronze':'#6c5b51'})[name]||'#c7cbd4'}
@@ -110,7 +110,7 @@ function initHero(){heroObserver.disconnect();heroVisible=true;const video=$('#h
 motionPreference.addEventListener('change',syncHero);document.addEventListener('visibilitychange',syncHero);new MutationObserver(syncHero).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open']});
 // A persistent theme shared by every page, applied before styles load.
 const themeToggle=$('#theme-toggle');
-function syncTheme(){const dark=document.documentElement.dataset.theme==='dark';themeToggle.setAttribute('aria-pressed',String(dark));themeToggle.setAttribute('aria-label',dark?'Включить светлую тему':'Включить тёмную тему');const meta=$('meta[name="theme-color"]');if(meta)meta.content=dark?'#080205':'#f6f2f1'}
+function syncTheme(){const dark=document.documentElement.dataset.theme==='dark';themeToggle.setAttribute('aria-pressed',String(dark));themeToggle.setAttribute('aria-label',dark?'Включить светлую тему':'Включить тёмную тему');const meta=$('meta[name="theme-color"]');if(meta)meta.content=dark?'#210608':'#f6f2f1'}
 themeToggle.addEventListener('click',()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('ishop-theme',document.documentElement.dataset.theme)}catch{}syncTheme()});
 addEventListener('storage',e=>{if(e.key==='ishop-theme'){document.documentElement.dataset.theme=e.newValue==='dark'?'dark':'light';syncTheme()}});syncTheme();
 // Hold the selected item, then drag to preview a destination; release to open it.
@@ -118,7 +118,7 @@ const dock=$('.dock');let navDrag=null,suppressNavClick=false;
 function clearNavDrag(){if(navDrag)clearTimeout(navDrag.timer);navDrag=null;dock.classList.remove('scrubbing');$$('.dock-item').forEach(el=>el.classList.remove('scrub-target'));updateDockIndicator()}
 dock.addEventListener('pointerdown',e=>{const item=e.target.closest('.dock-item');if(e.button!==0||!item||!(item.classList.contains('active')||item.getAttribute('aria-expanded')==='true'))return;navDrag={id:e.pointerId,x:e.clientX,y:e.clientY,item,target:item,ready:false};navDrag.timer=setTimeout(()=>{if(!navDrag)return;navDrag.ready=true;dock.setPointerCapture(e.pointerId);dock.classList.add('scrubbing');item.classList.add('scrub-target')},180)});
 dock.addEventListener('pointermove',e=>{const d=navDrag;if(!d||d.id!==e.pointerId)return;if(!d.ready){if(Math.hypot(e.clientX-d.x,e.clientY-d.y)<=10)return;clearTimeout(d.timer);d.ready=true;dock.setPointerCapture(e.pointerId);dock.classList.add('scrubbing')}const hit=document.elementFromPoint(e.clientX,e.clientY)?.closest('.dock-item');d.target=hit&&dock.contains(hit)?hit:null;$$('.dock-item').forEach(el=>el.classList.toggle('scrub-target',el===d.target));if(d.target)moveDockIndicator(d.target)});
-dock.addEventListener('pointerup',e=>{if(!navDrag||navDrag.id!==e.pointerId)return;const {ready,target,item}=navDrag;clearNavDrag();if(ready){suppressNavClick=true;setTimeout(()=>suppressNavClick=false,400);if(target&&target!==item){if(target.dataset.open)openPanel(target.dataset.open);else{const url=new URL(target.href);url.searchParams.set('v','ishop-9');navigate(url)}}}});
+dock.addEventListener('pointerup',e=>{if(!navDrag||navDrag.id!==e.pointerId)return;const {ready,target,item}=navDrag;clearNavDrag();if(ready){suppressNavClick=true;setTimeout(()=>suppressNavClick=false,400);if(target&&target!==item){if(target.dataset.open)openPanel(target.dataset.open);else{const url=new URL(target.href);url.searchParams.set('v','ishop-10');navigate(url)}}}});
 dock.addEventListener('pointercancel',clearNavDrag);dock.addEventListener('lostpointercapture',clearNavDrag);
 dock.addEventListener('click',e=>{if(suppressNavClick){e.preventDefault();e.stopPropagation();suppressNavClick=false}},true);
 dock.addEventListener('contextmenu',e=>e.preventDefault());
