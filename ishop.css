@@ -426,3 +426,31 @@ html[data-theme] body .chat{bottom:80px;max-height:calc(100dvh - 110px)}
  html[data-theme].ios-safari body nav.dock{bottom:max(16px,env(safe-area-inset-bottom,0px))}
  .home-catalog{padding-top:32px}
 }
+
+/* The basket shares the persistent shell and opens above the bottom actions. */
+html[data-theme] body dialog.cart-dialog{position:fixed;inset:auto max(16px,env(safe-area-inset-right,0px)) max(80px,calc(env(safe-area-inset-bottom,0px) + 64px)) auto;margin:0;width:560px;max-width:calc(100vw - 32px);max-height:calc(100dvh - 104px);padding:24px;border-radius:32px;overflow:hidden;color:var(--ink);background:linear-gradient(135deg,var(--frost-shine),transparent 65%),var(--filter-glass);backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;transform-origin:bottom right}
+.cart-dialog[open]{display:flex;flex-direction:column}
+.cart-dialog .dialog-top{flex:none;margin-bottom:12px;align-items:center}
+.cart-dialog .dialog-top h2{font-size:27px}
+.cart-dialog-body{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:2px 4px 4px}
+html[data-theme] body .cart-dialog .cart-layout{display:block;margin:0}
+html[data-theme] body .cart-dialog .cart-row{grid-template-columns:56px minmax(0,1fr) auto;grid-template-rows:auto auto 40px;gap:8px 12px;padding:18px 0;margin:0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html[data-theme] body .cart-dialog .cart-photo img{width:56px;height:76px;border-radius:12px}
+html[data-theme] body .cart-dialog .cart-title h3{font-size:16px;line-height:1.4;margin:0;overflow-wrap:anywhere}
+html[data-theme] body .cart-dialog .cart-price{font-size:14px}
+html[data-theme] body .cart-dialog .cart-variant{font-size:12px}
+html[data-theme] body .cart-dialog .quantity{height:40px}
+html[data-theme] body .cart-dialog .quantity button{height:38px;width:34px}
+html[data-theme] body .cart-dialog .cart-remove{width:40px;height:40px}
+html[data-theme] body .cart-dialog .summary,html[data-theme] body .cart-dialog .empty{padding:24px 0 0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html[data-theme] body .cart-dialog .summary{position:static;width:auto}
+.cart-dialog .summary h2{font-size:22px;margin-bottom:8px}
+.cart-dialog .summary .spec-row{padding:12px 0;font-size:14px}
+.cart-dialog .summary p{font-size:12px;margin-bottom:0}
+.cart-dialog .summary .pill{width:100%;margin-top:16px;min-height:48px}
+html[data-theme] body .cart-dialog .empty{padding:24px 4px 20px}
+.cart-dialog .empty h2{font-size:23px}
+.cart-dialog .empty p{font-size:15px;line-height:1.6}
+.cart-dialog .empty .pill{font-size:15px;padding:14px 20px}
+@media(min-width:1024px){html[data-theme] body dialog.cart-dialog{right:var(--side)}}
+@media(max-width:480px){html[data-theme] body dialog.cart-dialog{padding:20px 16px;border-radius:28px}html[data-theme] body .cart-dialog .cart-row{grid-template-columns:42px minmax(0,1fr) auto;column-gap:8px}html[data-theme] body .cart-dialog .cart-photo img{width:42px;height:62px}html[data-theme] body .cart-dialog .cart-title h3{font-size:14px}html[data-theme] body .cart-dialog .cart-price{font-size:12px}html[data-theme] body .cart-dialog .quantity button{width:28px}.cart-dialog .dialog-top h2{font-size:24px}}
